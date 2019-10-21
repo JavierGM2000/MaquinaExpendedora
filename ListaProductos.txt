@@ -1,0 +1,11 @@
+Botellin agua:1.5
+Botellin coca cola:2
+Botellin refresco naranja:2
+Botellin refresco limon:2
+Nestea:1.80
+Kit-Kat:1.5
+Toblerone:2
+Frutos Secos:1
+Pollas en vinagre:0.50
+Condones:4
+Chicles:1.50
