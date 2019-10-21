@@ -40,7 +40,7 @@ public class Main {
         //Creamos un for para ir por todos los caracteres de su respuesta
         for (int i = 0; i < input.length(); i++)
             //A cada caracter le preguntamos si es un digito
-            if (Character.isDigit(input.charAt(i))== false)
+            if (Character.isDigit(input.charAt(i))== false && input.charAt(i)!= '-')
                 //Si no es un digito devolveremeos un numero negativp que para
                 //Nosotros significara que hay un error.
                 return -1;
@@ -188,6 +188,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
+        boolean cerrar = false;
         //Crea una lista dinamica que podemos añadir productos que queramos
         //Creamos la lista dinamica que guardara los productos
         ArrayList Lista = new ArrayList();
@@ -206,12 +207,30 @@ public class Main {
             Lista.add(new Producto("Kit-Kat", 1.5f));
             Lista.add(new Producto("Toblerone", 2f));
             Lista.add(new Producto("Frutos Secos", 1f));
+            //We create a file with the basic things
+            BufferedWriter writer = new BufferedWriter(new FileWriter(ListaFile));
+            writer.write("BotellinAgua:1.5");
+            writer.newLine();
+            writer.write("Botellin coca cola:2");
+            writer.newLine();
+            writer.write("Botellin refresco naranja:2");
+            writer.newLine();
+            writer.write("Botellin refresco limon:2");
+            writer.newLine();
+            writer.write("Nestea:1.8");
+            writer.newLine();
+            writer.write("Kit-Kat:1.5");
+            writer.newLine();
+            writer.write("Toblerone:2");
+            writer.newLine();
+            writer.write("Frutos Secos:1");
+            writer.close();
         } else {
-            System.out.println("File already exists.");
+            System.out.println("File detected.");
             ParseListaArchivo(ListaFile, Lista);
         }
         
-        boolean cerrar = false;
+        
         //Lista para guardar productos comprados
         int[] Compra = new int[Producto.total_codigo-1];
 
@@ -262,8 +281,7 @@ public class Main {
                 {
                     //Significa que cerramos la maquina
                     JOptionPane.showMessageDialog(frame, "Gracias por haber utilizado nuestra maquina");
-                    cerrar = true;
-                    break;
+                    continue;
                 }
                 //Añadimos a la lista de la compra uno en la posicion del producto
                 Compra[CodigoElegido-1]++;
