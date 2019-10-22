@@ -358,6 +358,8 @@ public class Main {
                 "Gracias por la compra", JOptionPane.QUESTION_MESSAGE, null,
                 choices, // Array of choices
                 choices[0]); // Initial choice
+                if(input == null)
+                    break;
                 //Aqui leemos el input y le sumamos a pagado lo que haya elegido
                 if( input.equals("200€"))
                     Pagado+=200f;
