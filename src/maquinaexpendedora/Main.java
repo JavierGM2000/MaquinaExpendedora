@@ -48,7 +48,7 @@ public class Main {
                 return -1;
         //Si no devolvemos el valor positivo del input, por que un
         //callor negativo significa un error
-        return Math.abs(Integer.parseInt(input));
+        return Integer.parseInt(input);
     }
     //Comprobamos el input si corresponde a un codigo
     public static int CheckProductInput(int codigo)
@@ -288,6 +288,7 @@ public class Main {
                 //Si el codigo es 0 queremos cancelar la compra
                 if(CodigoElegido==0)
                 {
+                    Arrays.fill(Compra, 0);
                     //Significa que cerramos la maquina
                     JOptionPane.showMessageDialog(frame, "Gracias por haber utilizado nuestra maquina");
                     continue;
