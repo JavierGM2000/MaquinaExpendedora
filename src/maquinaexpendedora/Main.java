@@ -37,6 +37,8 @@ public class Main {
         if(input.length() == 0)
         //devolvemos -1 que para nostros es que hay un error
             return -1;
+        if(input.equals("-9876"))
+            return -9876;
         //Creamos un for para ir por todos los caracteres de su respuesta
         for (int i = 0; i < input.length(); i++)
             //A cada caracter le preguntamos si es un digito
@@ -267,6 +269,13 @@ public class Main {
                         //Al hacer un continue volvemos al principio de la compra
                         continue;
                     }
+                    if(CodigoElegido == -9876)
+                    {
+                        JOptionPane.showMessageDialog(frame, "Codigo de administrador: Apagar maquina");
+                        cerrar = true;
+                        CompraFinalizada = true;
+                        break;
+                    }
                     //Now we have to ceck
                     int check = CheckProductInput(CodigoElegido);
                     if(check == 1)
@@ -283,6 +292,8 @@ public class Main {
                     JOptionPane.showMessageDialog(frame, "Gracias por haber utilizado nuestra maquina");
                     continue;
                 }
+                if(cerrar == false)
+                {
                 //Añadimos a la lista de la compra uno en la posicion del producto
                 Compra[CodigoElegido-1]++;
                 //Creamos un valor que indica que queremos un dialogo de si o no
@@ -312,8 +323,11 @@ public class Main {
                     //significa que ha finalizado la compra
                     CompraFinalizada = true;
                 }
+                }
             }while(CompraFinalizada == false);
             //Creamos una variable
+            if(cerrar == false)
+            {
             float total = 0;
             //Le preguntamos si quiere comfirmar la compra
             System.out.println("Confirmar compra?");
@@ -382,7 +396,9 @@ public class Main {
                     System.out.println("Todavia tienes que meter: "+cambio+"€");
             }while(Pagado<total);//Y todo esto se hace mientra no haya pagado el cliente
             CambioCents(Pagado,total);//Calculamos el cambio y acabamos la compra
+            }
         }
+        System.exit(0);
     }
 
 }
